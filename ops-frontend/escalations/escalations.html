@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escalations · OpsBoard</title>
+    <link rel="stylesheet" href="../dashboard/dashboard.css">
+    <link rel="stylesheet" href="../tasks/tasks.css">
+    <link rel="stylesheet" href="escalations.css">
+</head>
+<body class="app-body">
+
+<aside class="sidebar">
+    <div class="logo">
+        <span class="logo-icon">◆</span>
+        <span class="logo-text">OpsBoard</span>
+    </div>
+    <nav class="nav">
+    <a href="../dashboard/dashboard.html" class="nav-item"><span class="nav-icon">▤</span> Dashboard</a>
+    <a href="../tasks/tasks.html" class="nav-item"><span class="nav-icon">☑</span> Tasks</a>
+    <a href="../employees/employees.html" class="nav-item" data-role="ADMIN"><span class="nav-icon">👤</span> Employees</a>
+    <a href="../teams/teams.html" class="nav-item" data-role="ADMIN,MANAGER"><span class="nav-icon">👥</span> Teams</a>
+    <a href="../sla/sla.html" class="nav-item" data-role="ADMIN,MANAGER"><span class="nav-icon">⏱</span> SLA</a>
+    <a href="../issues/issues.html" class="nav-item"><span class="nav-icon">⚠</span> Issues</a>
+    <a href="escalations.html" class="nav-item active" data-role="ADMIN,MANAGER"><span class="nav-icon">⬆</span> Escalations</a>
+    <a href="../reports/reports.html" class="nav-item" data-role="ADMIN,MANAGER"><span class="nav-icon">📊</span> Reports</a>
+</nav>
+    <div class="sidebar-footer">
+        <div class="user-avatar" id="avatarInitials">--</div>
+        <div class="user-meta">
+            <div class="user-name" id="userLabelSide">Loading...</div>
+            <div class="user-role" id="userRoleSide">—</div>
+        </div>
+        <button class="logout-btn" onclick="Auth.logout()" title="Logout">⏻</button>
+    </div>
+</aside>
+
+<main class="main">
+    <header class="main-header">
+        <div>
+            <h1>Escalations</h1>
+            <p class="subtext">Manage tasks that need higher-level attention</p>
+        </div>
+        <button class="primary" onclick="openForm()" data-perm="escalation.create">+ New Escalation</button>
+        
+    </header>
+
+    <div class="toolbar">
+        <input type="text" id="searchBox" placeholder="Search escalations..." oninput="filterList()" class="search">
+        <select id="filterStatus" onchange="filterList()" class="search">
+            <option value="">All Status</option>
+            <option value="TODO">To Do</option>
+            <option value="IN_PROGRESS">In Progress</option>
+            <option value="REVIEW">Review</option>
+            <option value="DONE">Done</option>
+        </select>
+    </div>
+
+    <table class="data-table">
+        <thead>
+        <tr>
+            <th>Reason</th>
+            <th>Task</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Escalated By</th>
+            <th>Escalated To</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="escalationBody">
+        <tr><td colspan="7" class="loading">Loading escalations...</td></tr>
+        </tbody>
+    </table>
+</main>
+
+<div id="escalationModal" class="modal" style="display:none">
+    <div class="modal-content">
+        <h3>New Escalation</h3>
+        <textarea id="escReason" placeholder="Reason for escalation"></textarea>
+        <div class="row">
+            <select id="escPriority">
+                <option value="LOW">🟢 Low</option>
+                <option value="MEDIUM">🔵 Medium</option>
+                <option value="HIGH" selected>🟠 High</option>
+                <option value="CRITICAL">🔴 Critical</option>
+            </select>
+            <select id="escStatus">
+                <option value="TODO" selected>To Do</option>
+                <option value="IN_PROGRESS">In Progress</option>
+                <option value="REVIEW">Review</option>
+                <option value="DONE">Done</option>
+            </select>
+        </div>
+        <select id="escTask">
+            <option value="">— Select Task —</option>
+        </select>
+        <select id="escEscalatedBy">
+            <option value="">— Escalated By —</option>
+        </select>
+        <select id="escEscalatedTo">
+            <option value="">— Escalated To —</option>
+        </select>
+        <div class="modal-actions">
+            <button class="ghost" onclick="closeForm()">Cancel</button>
+            <button class="primary" onclick="saveEscalation()">Save</button>
+        </div>
+    </div>
+</div>
+<script src="../config.js"></script>
+
+<script src="escalations.js"></script>
+</body>
+</html>

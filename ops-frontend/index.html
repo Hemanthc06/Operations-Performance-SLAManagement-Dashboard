@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ops Dashboard</title>
+    <link rel="stylesheet" href="auth/auth.css">
+</head>
+<body class="auth-body">
+
+<div class="auth-card">
+    <h1>📊 Ops Dashboard</h1>
+    <p class="subtitle">Operations Performance & Task Tracking</p>
+
+    <div class="tabs">
+        <button class="tab active" onclick="showTab('login', event)">Login</button>
+        <button class="tab" onclick="showTab('register', event)">Register</button>
+    </div>
+
+    <div id="loginTab">
+        <input type="text" id="loginUsername" placeholder="Username" autocomplete="username">
+        <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password">
+        <button class="primary" onclick="login()">Sign In</button>
+    </div>
+
+    <div id="registerTab" style="display:none">
+        <input type="text" id="regFullName" placeholder="Full Name">
+        <input type="email" id="regEmail" placeholder="Email">
+        <input type="text" id="regUsername" placeholder="Username" autocomplete="username">
+        <input type="password" id="regPassword" placeholder="Password" autocomplete="new-password">
+        <select id="regRole">
+            <option value="EMPLOYEE">Employee</option>
+            <option value="MANAGER">Manager</option>
+            <option value="ADMIN">Admin</option>
+        </select>
+        <button class="primary" onclick="register()">Create Account</button>
+    </div>
+
+    <p id="errorMsg" class="error"></p>
+</div>
+
+<script src="config.js"></script>
+<script src="auth/auth.js"></script>
+</body>
+</html>

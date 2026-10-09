@@ -1,0 +1,15 @@
+/* SLA module uses shared styles from tasks.css and dashboard.css. */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.badge.ON_TRACK  { background: #d1fae5; color: #047857; }
+.badge.AT_RISK   { background: #fef3c7; color: #a16207; }
+.badge.BREACHED  { background: #fecaca; color: #b91c1c; }
+.badge.MET       { background: #dbeafe; color: #1d4ed8; }

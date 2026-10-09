@@ -1,0 +1,20 @@
+/* Teams module uses shared styles from tasks.css and dashboard.css. */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.member-count {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #e0e7ff;
+    color: #4338ca;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.8rem;
+}

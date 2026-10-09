@@ -1,0 +1,15 @@
+/* Issues module uses shared styles from tasks.css and dashboard.css. */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.badge.OPEN        { background: #fee2e2; color: #b91c1c; }
+.badge.IN_PROGRESS { background: #fef3c7; color: #a16207; }
+.badge.RESOLVED    { background: #d1fae5; color: #047857; }
+.badge.CLOSED      { background: #e2e8f0; color: #475569; }

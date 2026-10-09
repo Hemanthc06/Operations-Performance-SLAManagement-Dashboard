@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees · OpsBoard</title>
+    <link rel="stylesheet" href="../dashboard/dashboard.css">
+    <link rel="stylesheet" href="../tasks/tasks.css">
+</head>
+<body class="app-body">
+
+<aside class="sidebar">
+    <div class="logo">
+        <span class="logo-icon">◆</span>
+        <span class="logo-text">OpsBoard</span>
+    </div>
+    <nav class="nav">
+    <a href="../dashboard/dashboard.html" class="nav-item"><span class="nav-icon">▤</span> Dashboard</a>
+    <a href="../tasks/tasks.html" class="nav-item"><span class="nav-icon">☑</span> Tasks</a>
+    <a href="employees.html" class="nav-item active" data-role="ADMIN"><span class="nav-icon">👤</span> Employees</a>
+    <a href="../teams/teams.html" class="nav-item" data-role="ADMIN,MANAGER"><span class="nav-icon">👥</span> Teams</a>
+    <a href="../sla/sla.html" class="nav-item" data-role="ADMIN,MANAGER"><span class="nav-icon">⏱</span> SLA</a>
+    <a href="../issues/issues.html" class="nav-item"><span class="nav-icon">⚠</span> Issues</a>
+    <a href="../escalations/escalations.html" class="nav-item" data-role="ADMIN,MANAGER"><span class="nav-icon">⬆</span> Escalations</a>
+    <a href="../reports/reports.html" class="nav-item" data-role="ADMIN,MANAGER"><span class="nav-icon">📊</span> Reports</a>
+</nav>
+    <div class="sidebar-footer">
+        <div class="user-avatar" id="avatarInitials">--</div>
+        <div class="user-meta">
+            <div class="user-name" id="userLabelSide">Loading...</div>
+            <div class="user-role" id="userRoleSide">—</div>
+        </div>
+        <button class="logout-btn" onclick="Auth.logout()" title="Logout">⏻</button>
+    </div>
+</aside>
+
+<main class="main">
+    <header class="main-header">
+        <div>
+            <h1>Employees</h1>
+            <p class="subtext">Manage employee directory and team assignments</p>
+        </div>
+        <button class="primary" onclick="openForm()" data-perm="employee.create">+ New Employee</button>
+    </header>
+
+    <div class="toolbar">
+        <input type="text" id="searchBox" placeholder="Search by name or email..." oninput="filterList()" class="search">
+    </div>
+
+    <table class="data-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Designation</th>
+            <th>Department</th>
+            <th>Team</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="employeeBody">
+        <tr><td colspan="6" class="loading">Loading employees...</td></tr>
+        </tbody>
+    </table>
+</main>
+
+<div id="employeeModal" class="modal" style="display:none">
+    <div class="modal-content">
+        <h3 id="modalTitle">New Employee</h3>
+        <input id="empId" type="hidden">
+        <input id="empFullName" placeholder="Full Name">
+        <input id="empEmail" type="email" placeholder="Email">
+        <input id="empDesignation" placeholder="Designation (e.g., Software Engineer)">
+        <input id="empDepartment" placeholder="Department (e.g., Engineering)">
+        <select id="empTeam">
+            <option value="">— No Team —</option>
+        </select>
+        <div class="modal-actions">
+            <button class="ghost" onclick="closeForm()">Cancel</button>
+            <button class="primary" onclick="saveEmployee()">Save</button>
+        </div>
+    </div>
+</div>
+
+<script src="../config.js"></script>
+
+<script src="employees.js"></script>
+</body>
+</html>

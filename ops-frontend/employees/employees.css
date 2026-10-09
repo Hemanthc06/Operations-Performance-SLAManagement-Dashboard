@@ -1,0 +1,11 @@
+/* Employees module uses shared styles from tasks.css and dashboard.css.
+   Only page-specific overrides go here. */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
